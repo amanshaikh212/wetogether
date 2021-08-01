@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>WeTogether  - A real time chat app</h1>
+  <app-username (userNameEvent)="userNameUpdate($event)" *ngIf="!userName"></app-username>
+  <div class="chatbox">
+    <div class="chatbox__user-list">
+      <h2>User list</h2>
+      <div class="chatbox__user--active" *ngFor="let user of userList">
+        <p>{{user}}</p>
+      </div>
+    </div>
+
+    <div class="messages_list">
+      <div class="chatbox__messages" *ngFor="let msg of messageList" [ngClass]="{mine:msg.mine}">
+        <div class="user-message">
+          <div class="message-box">
+            <p class="name">{{msg.userName}}</p>
+            <br>
+            <p class="message">{{msg.message}}</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Your message" aria-label="Recipient's username" [(ngModel)]="message" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary btn-info" style="height: 37px;" type="button" id="button-addon2" (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
